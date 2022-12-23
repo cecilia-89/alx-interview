@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-# Pascal Triangle implementation using python
+"""Pascal Triangle implementation using python"""
+
 
 def pascal_triangle(n):
-    # Pasacal triangle using recursion
+    """Pasacal triangle using recursion"""
 
     if n < 1:
         return []
