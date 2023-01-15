@@ -4,7 +4,6 @@
 
 def pascal_triangle(n):
     """Pasacal triangle using recursion"""
-
     if n < 1:
         return []
 
@@ -31,3 +30,5 @@ def pascal_triangle(n):
     my_lst.append(1)
     new_lst.append(my_lst)
     return new_lst
+
+print(pascal_triangle(54))
