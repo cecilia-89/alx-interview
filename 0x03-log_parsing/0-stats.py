@@ -15,7 +15,7 @@ try:
         if words[-2].isdigit() and value is not None:
             statusCodes[words[-2]] = value + 1
 
-        if (count) % 10 == 0:
+        if (count) % 10 == 0 or count == 1:
             print("File size: {}".format(fileSize))
             [print('{}: {}'.format(k, v)) for k, v in statusCodes.items()
              if v != 0]
