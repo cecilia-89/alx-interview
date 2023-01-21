@@ -5,7 +5,7 @@ import sys
 
 fileSize = 0
 statusCodes = {}
-for count, line in enumerate(sys.stdin, start = 1):
+for count, line in enumerate(sys.stdin, start=1):
     try:
         words = line.split()
         fileSize += int(words[-1])
@@ -14,9 +14,10 @@ for count, line in enumerate(sys.stdin, start = 1):
 
         if (count) % 10 == 0:
             print("File size: {}".format(fileSize))
-            [print(f'{k}: {v}') for k, v in sorted(statusCodes.items())]
+            [print('{}: {}'.format(k, v))
+             for k, v in sorted(statusCodes.items())]
 
     except KeyboardInterrupt:
         print("File size: {}".format(fileSize))
-        [print(f'{k}: {v}') for k, v in sorted(statusCodes.items())]
-
+        [print('{}: {}'.format(k, v))
+         for k, v in sorted(statusCodes.items())]
