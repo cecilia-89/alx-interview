@@ -4,22 +4,23 @@ import sys
 
 
 fileSize = 0
-statusCodes = {}
+statusCodes = {'200': 0, '301': 0, '400': 0, '401': 0,
+               '403': 0, '404': 0, '405': 0, '500': 0}
 try:
     for count, line in enumerate(sys.stdin, start=1):
         words = line.split()
         fileSize += int(words[-1])
 
-        if words[-2].isdigit():
-            value = statusCodes.setdefault(words[-2], 0)
+        value = statusCodes.get(words[-2])
+        if words[-2].isdigit() and value is not None:
             statusCodes[words[-2]] = value + 1
 
         if (count) % 10 == 0:
             print("File size: {}".format(fileSize))
-            [print('{}: {}'.format(k, v))
-             for k, v in sorted(statusCodes.items())]
+            [print('{}: {}'.format(k, v)) for k, v in statusCodes.items()
+             if v != 0]
 
 except KeyboardInterrupt:
     print("File size: {}".format(fileSize))
     [print('{}: {}'.format(k, v))
-     for k, v in sorted(statusCodes.items())]
+     for k, v in statusCodes.items()]

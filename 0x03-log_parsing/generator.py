@@ -4,7 +4,7 @@ from time import sleep
 import datetime
 import random
 
-for i in range(10000):
+for i in range(10):
     sys.stdout.write("{:d}.{:d}.{:d}.{:d} - [{}] \"GET /projects/260 HTTP/1.1\" {} {}\n".format(
         random.randint(1, 255), random.randint(1, 255), random.randint(1, 255), random.randint(1, 255),
         datetime.datetime.now(),
