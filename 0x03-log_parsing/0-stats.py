@@ -26,4 +26,5 @@ try:
 except KeyboardInterrupt:
     print("File size: {}".format(fileSize))
     [print('{}: {}'.format(k, v))
-     for k, v in statusCodes.items()]
+     for k, v in statusCodes.items()
+     if v != 0]
