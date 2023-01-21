@@ -6,6 +6,9 @@ lines = sys.stdin.readlines()
 fileSize = 0
 statusCodes = {'200': 0, '301': 0, '400': 0, '401': 0,
                '403': 0, '404': 0, '405': 0, '500': 0}
+
+if len(lines) == 0:
+    print('File size: {}'.format(0))
 try:
     for count, line in enumerate(lines, start=1):
         words = line.split()
@@ -14,7 +17,6 @@ try:
         value = statusCodes.get(words[-2])
         if words[-2].isdigit() and value is not None:
             statusCodes[words[-2]] = value + 1
-
 
         if count == len(lines) or (count % 10) == 0:
             print("File size: {}".format(fileSize))
