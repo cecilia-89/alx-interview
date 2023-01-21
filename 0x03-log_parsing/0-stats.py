@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""Log Parsing"""
+"""Module: Log Parsing
+eads stdin line by line and computes metrics"""
 import sys
-import re
+
 
 fileSize = 0
 statusCodes = {}
