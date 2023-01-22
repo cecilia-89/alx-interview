@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Log Parsing: reads stdin line by line and computes metrics"""
 import sys
+import re
 
 lines = sys.stdin.readlines()
 fileSize = 0
@@ -10,6 +11,10 @@ if len(lines) == 0:
     print('File size: {}'.format(0))
 try:
     for count, line in enumerate(lines, start=1):
+        match = re.match('^[0-9]{1,3}([.][0-9]{1,3}){3} - (\[.+\])', line)
+
+        if match is None:
+            continue
         words = line.split()
         fileSize += int(words[-1])
 
@@ -19,8 +24,8 @@ try:
 
         if count == len(lines) or (count % 10) == 0:
             print("File size: {}".format(fileSize))
-            [print('{}: {}'.format(k, v)) for k, v in sorted(statusCodes.items())
-             if v != 0]
+            [print('{}: {}'.format(k, v))
+             for k, v in sorted(statusCodes.items()) if v != 0]
 
 except KeyboardInterrupt:
     print("File size: {}".format(fileSize))
