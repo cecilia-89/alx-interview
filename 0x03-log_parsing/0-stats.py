@@ -12,10 +12,9 @@ if len(lines) == 0:
 try:
     for count, line in enumerate(lines, start=1):
 
-        if (len(lines) < 2):
-            continue
-
         words = line.split()
+        if (len(words) != 9):
+            continue
         fileSize += int(words[-1])
 
         if words[-2].isdigit():
