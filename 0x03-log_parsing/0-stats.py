@@ -1,20 +1,20 @@
 #!/usr/bin/python3
 """Log Parsing: reads stdin line by line and computes metrics"""
 import sys
-import re
+
 
 lines = sys.stdin.readlines()
 fileSize = 0
 statusCodes = {}
 
 if len(lines) == 0:
-    print('File size: {}'.format(0))
+    print('File size: {}'.format(fileSize))
 try:
     for count, line in enumerate(lines, start=1):
-        match = re.match('^[0-9]{1,3}([.][0-9]{1,3}){3} - (\[.+\])', line)
 
-        if match is None:
+        if (len(lines) < 2):
             continue
+
         words = line.split()
         fileSize += int(words[-1])
 
