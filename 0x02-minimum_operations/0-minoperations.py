@@ -6,8 +6,7 @@ def minOperations(n):
     """ calculates the fewest number of operations needed
     to result in exactly (n * H)"""
 
-    textFile = 'H'
-    count = 0
+    textFile, count = 'H', 0
     length = len(textFile)
 
     while n > length:
@@ -15,12 +14,17 @@ def minOperations(n):
         if n % length == 0:
             count += 2
             copyFile = textFile
-            textFile += textFile
+            textFile = "".join([textFile, textFile])
 
         else:
             count += 1
-            textFile += copyFile
+            textFile = "".join([textFile, copyFile])
 
         length = len(textFile)
 
     return count
+
+
+
+n = 2147483640
+print("Min number of operations to reach {} char: {}".format(n, minOperations(n)))
