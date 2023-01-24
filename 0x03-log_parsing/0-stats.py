@@ -13,13 +13,10 @@ try:
     for count, line in enumerate(lines, start=1):
 
         words = line.split()
-        if (len(words) != 9):
+        if not words[-1].isdigit():
             continue
-        fileSize += int(words[-1])
 
-        if words[-2].isdigit():
-            value = statusCodes.setdefault(words[-2], 0)
-            statusCodes[words[-2]] = value + 1
+        fileSize += int(words[-1])
 
         if count == len(lines) or (count % 10) == 0:
             print("File size: {}".format(fileSize))
