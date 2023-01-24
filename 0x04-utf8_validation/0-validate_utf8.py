@@ -7,5 +7,3 @@ def validUTF8(data):
         if item > 255:
             return False
     return True
-
-
