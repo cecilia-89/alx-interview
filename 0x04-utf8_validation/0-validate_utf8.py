@@ -4,7 +4,8 @@
 
 def validUTF8(data):
     """determines if a given data set represents a valid UTF-8"""
- 
+    if len(data) == 0:
+        return False
     for item in data:
         if item > 255:
             return False
