@@ -5,6 +5,11 @@
 def island_perimeter(grid):
     """calculates the perimeter of an island"""
     perimeter = 0
+    zeroes = [0 for _ in grid[0]]
+
+    grid.insert(0, zeroes)
+    grid.append(zeroes)
+
     for count, array in enumerate(grid):
         for i, item in enumerate(array):
             if item == 1:
