@@ -5,8 +5,12 @@
 def island_perimeter(grid):
     """calculates the perimeter of an island"""
     perimeter = 0
-    zeroes = [0 for _ in grid[0]]
 
+    for array in grid:
+        array.insert(0, 0)
+        array.append(0)
+
+    zeroes = [0 for _ in grid[0]]
     grid.insert(0, zeroes)
     grid.append(zeroes)
 
