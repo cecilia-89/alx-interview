@@ -1,18 +1,19 @@
 #!/usr/bin/python3
-def canUnlockAll(boxes):
-  unboxed = [] 
-  for count, value in enumerate(boxes):
-    if count == 0:
-      subarray = [boxes[item] for item in value]
-      unboxed.append(value)
-    else:
-      sublist = []
-      for array in subarray:
-        for item in array:
-          sublist.append(boxes[item])
-      unboxed.append(sublist)
-      subarray = sublist
-  return unboxed
+"""Opens boxes based on keys in other boxes"""
 
-boxes = [[1, 4, 6], [2], [0, 4, 1], [5, 6, 2], [3], [4, 1], [6]]
-print(canUnlockAll(boxes))
+
+def canUnlockAll(boxes):
+    """Determines if boxes can be unlocked"""
+    position = 0
+    unlocked = {}
+
+    for box in boxes:
+        if len(box) == 0 or position == 0:
+            unlocked[position] = "always_unlocked"
+        for key in box:
+            if key < len(boxes) and key != position:
+                unlocked[key] = key
+        if len(unlocked) == len(boxes):
+            return True
+        position += 1
+    return False
